@@ -21,13 +21,13 @@ VALIDATE(){
     fi
 }
 
-# if [ $USERID -ne 0 ]
-# then
-#     echo "Please run this script with root access."
-#     exit 1 # manually exit if error comes.
-# else
-#     echo "You are super user."
-# fi
+if [ $USERID -ne 0 ]
+then
+    echo "Please run this script with root access."
+    exit 1 # manually exit if error comes.
+else
+    echo "You are super user."
+fi
 
 echo "*************   eksctl installation - start *************"
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp &>>$LOGFILE
