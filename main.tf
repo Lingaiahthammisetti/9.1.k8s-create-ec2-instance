@@ -9,7 +9,7 @@ resource "aws_instance" "k8s_workstation" {
     connection {
     type        = "ssh"
     user        = "ec2-user"
-    password n  = "DevOps321"
+    password    = "DevOps321"
     host        = self.public_ip
     }
     provisioner "file" {
