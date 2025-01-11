@@ -7,18 +7,18 @@ resource "aws_instance" "k8s_workstation" {
         Name = "K8s-Workstation"
     }
     connection {
-    type        = "ssh"
-    user        = "ec2-user"
-    password    = "DevOps321"
-    host        = self.public_ip
+        type        = "ssh"
+        user        = "ec2-user"
+        password    = "DevOps321"
+        host        = self.public_ip
     }
     provisioner "file" {
-    source      = "install_eksctl_kubectl.sh"     
-    destination = "/tmp/eksctl_kubectl.sh" 
+        source      = "install_eksctl_kubectl.sh"     
+        destination = "/tmp/eksctl_kubectl.sh" 
     }
     provisioner "file" {
-    source      = "eks.yaml"      
-    destination = "/tmp/eks-cluster.yaml" 
+        source      = "eks.yaml"      
+        destination = "/tmp/eks-cluster.yaml" 
     }
 
 }
