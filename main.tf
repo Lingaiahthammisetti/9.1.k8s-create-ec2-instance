@@ -2,7 +2,7 @@ resource "aws_instance" "k8s_workstation" {
     ami           = data.aws_ami.rhel_info.id
     instance_type = var.k8s_instance.instance_type
     vpc_security_group_ids = [var.allow_all]
-    #user_data = file("${path.module}/install_eksctl_kubectl.sh")
+    user_data = file("${path.module}/install_eksctl_kubectl.sh")
 
     tags = {
         Name = "K8s-Workstation"
