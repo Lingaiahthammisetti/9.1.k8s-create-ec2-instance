@@ -20,7 +20,6 @@ resource "aws_instance" "k8s_workstation" {
         source      = "eks.yaml"      
         destination = "/tmp/eks-cluster.yaml" 
     }
-
 }
 resource "aws_route53_record" "k8s_r53" {
     zone_id = var.zone_id
