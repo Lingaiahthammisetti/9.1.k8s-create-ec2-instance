@@ -55,7 +55,7 @@ VALIDATE $? "kubectl version "
 echo "*************   kubectl installation - end *************"
 
 
-echo "*************   eksctl cluster creation started *************"
-eksctl create cluster --config-file=eks.yaml &>>$LOGFILE
-VALIDATE $? "eksctl cluster creation process"
-echo "*************   eksctl cluster creation completed *************"
+# echo "*************   eksctl cluster creation started *************"
+# eksctl create cluster --config-file=eks.yaml &>>$LOGFILE
+# VALIDATE $? "eksctl cluster creation process"
+# echo "*************   eksctl cluster creation completed *************"

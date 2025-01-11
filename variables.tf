@@ -1,4 +1,4 @@
-variable "allow_all" {
+variable "allow-everything" {
    type = string
    default = "sg-06b1b57b365846051"
 }
