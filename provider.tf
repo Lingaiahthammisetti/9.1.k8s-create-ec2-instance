@@ -6,10 +6,10 @@ terraform {
     }
   }
   backend "s3" {
-    # bucket = "expense-tf-ec2-remote-state"
-    # key    = "expense-tf-ec2-key"
-    # region = "us-east-1"
-    # dynamodb_table = "expense-tf-ec2-locking"
+    bucket = "k8s-workstation-remote-state"
+    key    = "k8s-workstation-ec2"
+    region = "us-east-1"
+    dynamodb_table = "k8s-workstation-locking"
   }
 }
 provider "aws" {
