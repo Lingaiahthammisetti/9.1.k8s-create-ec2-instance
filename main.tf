@@ -6,6 +6,21 @@ resource "aws_instance" "k8s_workstation" {
     tags = {
         Name = "K8s-Workstation"
     }
+    connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    password n  = "DevOps321"
+    host        = self.public_ip
+    }
+    provisioner "file" {
+    source      = "install_eksctl_kubectl.sh"     
+    destination = "/tmp/eksctl_kubectl.sh" 
+    }
+    provisioner "file" {
+    source      = "eks.yaml"      
+    destination = "/tmp/eks-cluster.yaml" 
+    }
+
 }
 resource "aws_route53_record" "k8s_r53" {
     zone_id = var.zone_id
