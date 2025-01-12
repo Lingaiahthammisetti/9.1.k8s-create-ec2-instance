@@ -2,23 +2,8 @@ resource "aws_instance" "k8s_workstation" {
     ami           = data.aws_ami.rhel_info.id
     instance_type = var.k8s_instance.instance_type
     vpc_security_group_ids = [var.allow-everything]
-    #user_data = file("${path.module}/install_eksctl_kubectl.sh")
     tags = {
         Name = "K8s-Workstation"
-    }
-    connection {
-        type        = "ssh"
-        user        = "ec2-user"
-        password    = "DevOps321"
-        host        = self.public_ip
-    }
-    provisioner "file" {
-        source      = "install_eksctl_kubectl.sh"     
-        destination = "/tmp/install_eksctl_kubectl.sh" 
-    }
-    provisioner "file" {
-        source      = "eks.yaml"      
-        destination = "/tmp/eks.yaml" 
     }
 }
 resource "aws_route53_record" "k8s_r53" {
