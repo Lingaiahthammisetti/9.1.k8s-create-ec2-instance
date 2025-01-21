@@ -136,7 +136,7 @@ VALIDATE $? "changing helm file permission to 700"
 VALIDATE $? "Executing the Helm file"
 echo "*************Install Helm - completed*************"
 
-echo "*************   eksctl cluster creation started *************"
-eksctl create cluster --config-file=eks.yaml &>>$LOGFILE
-VALIDATE $? "eksctl cluster creation process"
-echo "*************   eksctl cluster creation completed *************"
+# echo "*************   eksctl cluster creation started *************"
+# eksctl create cluster --config-file=eks.yaml &>>$LOGFILE
+# VALIDATE $? "eksctl cluster creation process"
+# echo "*************   eksctl cluster creation completed *************"
