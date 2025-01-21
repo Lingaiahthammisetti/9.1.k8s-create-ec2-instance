@@ -13,3 +13,9 @@ variable "k8s_instance" {
         instance_type  = "t3.micro"
    }
 }
+
+# variable "public_subnet_id" {
+#     type = string
+#     default = "subnet-0ea509ad4cba242d7" #update it right one.
+# }
+
