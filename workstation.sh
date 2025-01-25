@@ -1,27 +1,31 @@
 #!/bin/bash
 
 #Installing Docker
+echo "************ Docker installation - start *************"
 yum install yum-utils -y 
 yum-config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo 
 yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y 
 systemctl start docker 
 systemctl enable docker 
 usermod -aG docker ec2-user 
-echo "******* Resize EBS Storage ****************"
+echo "*********** Docker installation - completed *************"
+
+
 # ec2 instance creation request for Docker expense project
 # =============================================
 # RHEL-9-DevOps-Practice
 # t3.micro
 # allow-everything
 # 50 GB
-
+echo "******* Resize EBS Storage - start **************"
+#Note: We can't use these commands in the creation of ec2 instances.
 lsblk 
 sudo growpart /dev/nvme0n1 4  #t3.micro used only
 sudo lvextend -l +50%FREE /dev/RootVG/rootVol 
 sudo lvextend -l +50%FREE /dev/RootVG/varVol 
 sudo xfs_growfs / 
 sudo xfs_growfs /var 
-
+echo "******* Resize EBS Storage - completed **************"
 
 echo "*************   eksctl installation - start *************"
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp 
