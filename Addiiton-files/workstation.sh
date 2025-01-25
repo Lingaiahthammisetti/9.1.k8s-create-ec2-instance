@@ -17,15 +17,15 @@ echo "*********** Docker installation - completed *************"
 # t3.micro
 # allow-everything
 # 50 GB
-echo "******* Resize EBS Storage - start **************"
-#Note: We can't use these commands in the creation of ec2 instances.
-lsblk 
-sudo growpart /dev/nvme0n1 4  #t3.micro used only
-sudo lvextend -l +50%FREE /dev/RootVG/rootVol 
-sudo lvextend -l +50%FREE /dev/RootVG/varVol 
-sudo xfs_growfs / 
-sudo xfs_growfs /var 
-echo "******* Resize EBS Storage - completed **************"
+# echo "******* Resize EBS Storage - start **************"
+# #Note: We can't use these commands in the creation of ec2 instances.
+# lsblk 
+# sudo growpart /dev/nvme0n1 4  #t3.micro used only
+# sudo lvextend -l +50%FREE /dev/RootVG/rootVol 
+# sudo lvextend -l +50%FREE /dev/RootVG/varVol 
+# sudo xfs_growfs / 
+# sudo xfs_growfs /var 
+# echo "******* Resize EBS Storage - completed **************"
 
 echo "*************   eksctl installation - start *************"
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp 
@@ -61,6 +61,6 @@ chmod 700 get_helm.sh
 echo "*************Install Helm - completed*************"
 
 # echo "*************   eksctl cluster creation started *************"
-# eksctl create cluster --config-file=eks.yaml 
+eksctl create cluster --config-file=eks.yaml 
 # VALIDATE $? "eksctl cluster creation process"
 # echo "*************   eksctl cluster creation completed *************"
