@@ -1,4 +1,9 @@
-#What are difference between roles: DevOps Engineer, SRE, Cloud Engineers, Platform Engineers?#
+# What are difference between roles:
+# 1. DevOps Engineer, 
+# 2. SRE, 
+# 3. Cloud Engineers, 
+# 4. Platform Engineers?
+
 
 DevOps engineers automate workflows, code infrastructure, and ensure smooth deployments(Tools: Jenkins, Docker, Kubernetes).
 
