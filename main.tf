@@ -1,4 +1,4 @@
-resource "aws_instance" "k8s_workstation" {
+resource "aws_instance" "k8s_server_instance" {
     ami           = data.aws_ami.rhel_info.id
     instance_type = var.k8s_instance.instance_type
     vpc_security_group_ids = [var.allow-everything]
@@ -10,7 +10,7 @@ resource "aws_instance" "k8s_workstation" {
     delete_on_termination = true  # Automatically delete the volume when the instance is terminated
     }
     tags = {
-        Name = "K8s-Workstation"
+        Name = "K8s-ec2-instance"
     }
 }
 resource "aws_route53_record" "k8s_r53" {
@@ -18,6 +18,6 @@ resource "aws_route53_record" "k8s_r53" {
     name    = "k8s.${var.domain_name}"
     type    = "A"
     ttl     = 1
-    records = [aws_instance.k8s_workstation.public_ip]
+    records = [aws_instance.k8s_server_instance.public_ip]
     allow_overwrite = true
 }
