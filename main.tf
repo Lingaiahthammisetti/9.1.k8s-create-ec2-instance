@@ -5,10 +5,12 @@ resource "aws_instance" "k8s_server_instance" {
     #user_data  = file("workstation.sh")
     #user_data  = file("${path.module}/install_jenkins_master.sh")
     root_block_device {
-        volume_size = 50
-        volume_type = "gp3"
-        iops        = 3000
-        encrypted   = true
+        encrypted             = false
+        volume_type           = "gp3"
+        volume_size           = 100
+        iops                  = 3000
+        throughput            = 60
+        delete_on_termination = true
     }
     tags = {
         Name = "K8s-ec2-instance"
