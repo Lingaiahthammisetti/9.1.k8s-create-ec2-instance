@@ -1,1 +1,1 @@
-# Creating ec2 instance for Kubernetes.
+# Creating ec2 instance to work Kubernetes resources.
